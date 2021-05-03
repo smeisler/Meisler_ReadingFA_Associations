@@ -4,20 +4,20 @@ Code used in Meisler and Gabrieli 2021
 This repository includes the code used to preprocess the neuroimaging data, segment white matter tracts, perform tractometry, and compare cohort characteristics. The preprocessing and white matter segmentation is agnostic to the data set. That is, it can be run on **any BIDs** compliant dataset with T1w and diffusion data. The tractometry and cohort characteristic code is tailored to work with a Healthy Brain Network (HBN) phenotypic query, but can be adapted to work with a custom file.
 
 ## Requirements
-### Additional requirements if downloading HBN data
-- Data Usage Agreement (if working with Healthy Brain Network data), used to access neuroimaging and phenotypic data
-- Amazon Web Services (AWS) Command Line version 2 (or any version with s3 capabilities), used to download neuroimaging data
 ### In general
 - BIDS-compliant dataset with _at least_ T1w and DWI images
 - Singularity (used to compile and run Docker Images)
   - QSIPrep docker container (`singularity build qsiprep.simg docker://pennbbl/qsiprep:0.13.0RC1`)
   - TractSeg docker container (`singularity build tractseg.simg docker://brainlife/tractseg:2.2`)
   - Combined MrTrix 3.0.2 w/ FSL 6.0.4 and ANTs 2.3.4 container (`singularity build mrtrix_fsl.simg docker://sclove/mrtrix3.0.2`)
-  - If using your own single-shelled DTI data (not HBN), then you will also need mrtrix3tissue (`singularity build mrtrix3t.simg docker://vnmd/mrtrix3tissue_5.2.8:20201111)
+  - If using your own single-shelled DTI data (not HBN), then you will also need mrtrix3tissue (`singularity build mrtrix3t.simg docker://vnmd/mrtrix3tissue_5.2.8:20201111`)
   - Singularity 3.6.3 was used in this study. The above reference the images used in this study, but later versions of these software may introduce improvements that should be used in future research.
 - SLURM job scheduler, used for parallelizing jobs.
 - Python environment with Jupyter capabilities and the following packages: numpy, scipy, pandas, glob, matplotlib, json, filecmp (most are standard Anaconda packages)
 - FreeSurfer license (https://surfer.nmr.mgh.harvard.edu/fswiki/License)
+### Additional requirements if downloading HBN data
+- Data Usage Agreement (if working with Healthy Brain Network data), used to access neuroimaging and phenotypic data
+- Amazon Web Services (AWS) Command Line version 2 (or any version with s3 capabilities), used to download neuroimaging data
 
 ## Step 0: Download and prepare HBN data (if using HBN)
 - Obtain a Data Usage Agreement: http://fcon_1000.projects.nitrc.org/indi/cmi_healthy_brain_network/Pheno_Access.html#DUA
