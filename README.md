@@ -6,6 +6,8 @@ This repository includes the code used to preprocess the neuroimaging data, segm
 To cite:
 ---ADD CITATION HERE WHEN AVAILABLE---
 
+If using this code, please also cite relevant papers to the software and methods employed here. See our paper for these references.
+
 ## Requirements
 ### In general
 - BIDS-compliant dataset with _at least_ T1w and DWI images
