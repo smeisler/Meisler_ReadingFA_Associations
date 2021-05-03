@@ -48,7 +48,11 @@ This repository includes the code used to preprocess the neuroimaging data, segm
 - In terminal, navigate to the TractSeg code folder, and run `./submit_job_array.sh` to begin TractSeg.
 
 ## Setp 3: Perform Tractometry and Compare Cohort Characteristics
-Save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory. Download `HBN_query.ipynb` to your BIDS code directory, open it, and follow the directions in the notebook. This is mainly tailored towards analyzing HBN data but can be adapted to look at other data.
+- You should see a file called `subjects.txt` in your TractSeg derivatives folder. Open it and update the `/PATH/TO/BIDS` portion of lines 1 and 3 (beginning with `tracometry_path` and `plot_3d`) to direct to your BIDS directory. Feel free to rename this something more informative (e.g. `towre_group_difference.txt`)
+- Based on the analysis you want to run (correlation vs group difference) and your desired nuisance regressors, update line 28 in accordance with the directions written in the body of `subjects.txt`.
+- Save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory. Download `HBN_query.ipynb` to your BIDS code directory, open it, and follow the directions in the notebook. This is mainly tailored towards analyzing HBN data but can be adapted to look at other data.
+- Copy the tractometry model input (output of Step 5 of `HBN_query.ipynb`) and paste it to `subjects.txt` (or whatever you named it) under line 28.
+- Navigate terminal to your TractSeg derivative folder and un the model: `singularity exec -e -B /PATH/TO/BIDS /PATH/TO/tractseg.simg plot_tractometry_results -i subjects.txt -o output.png`
 
 ## Questions? Feel free to either open an issue in this repository or email Steven Meisler (smeisler@g.harvard.edu) with any problems, suggestions, or anything else!
 
