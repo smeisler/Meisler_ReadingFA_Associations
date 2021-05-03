@@ -39,7 +39,7 @@ This repository includes the code used to preprocess the neuroimaging data, segm
 - Download the `code/TractSeg` folder to your BIDS code folder.
 
 ## Setp 3: Perform Tractometry and Compare Cohort Characteristics
-Download `HBN_query.ipynb` to your BIDS code directory, open it, and follow the directions in the notebook. This is mainly tailored towards analyzing HBN data but can be adapted to look at other data.
+Save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory. Download `HBN_query.ipynb` to your BIDS code directory, open it, and follow the directions in the notebook. This is mainly tailored towards analyzing HBN data but can be adapted to look at other data.
 
 ## Questions? Feel free to either open an issue in this repository or email Steven Meisler (smeisler@g.harvard.edu) with any problems, suggestions, or anything else!
 
