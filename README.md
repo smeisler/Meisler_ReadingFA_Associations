@@ -1,4 +1,44 @@
 # Meisler_and_Gabrieli2021
 Code used in Meisler and Gabrieli 2021
 
-This repository includes the code used to preprocess the neuroimaging data, segment white matter tracts, perform tractometry, and compare cohort characteristics. The preprocessing and white matter segmentation is agnostic to the data set. That is, it can be run on **any BIDs** compliant dataset with T1w and diffusion data. The tractometry and cohort characteristic code is tailored to work with a HBN phenotypic query, but can be adapted to work with a custom file.
+This repository includes the code used to preprocess the neuroimaging data, segment white matter tracts, perform tractometry, and compare cohort characteristics. The preprocessing and white matter segmentation is agnostic to the data set. That is, it can be run on **any BIDs** compliant dataset with T1w and diffusion data. The tractometry and cohort characteristic code is tailored to work with a Healthy Brain Network (HBN) phenotypic query, but can be adapted to work with a custom file.
+
+## Requirements
+### Additional requirements if downloading HBN data
+- Data Usage Agreement (if working with Healthy Brain Network data), used to access neuroimaging and phenotypic data
+- Amazon Web Services (AWS) Command Line version 2 (or any version with s3 capabilities), used to download neuroimaging data
+### In general
+- BIDS-compliant dataset with _at least_ T1w and DWI images
+- Singularity (used to compile and run Docker Images)
+  - QSIPrep docker container (singularity build qsiprep.simg docker://pennbbl/qsiprep:0.13.0RC1)
+  - TractSeg docker container (singularity build tractseg.simg docker://brainlife/tractseg:2.2)
+  - Singularity 3.6.3 was used in this study. The above reference the images used in this study, but later versions of these software may introduce improvements that should be used in future research.
+- SLURM job scheduler, used for parallelizing jobs.
+- Python environment with Jupyter capabilities and the following packages: numpy, scipy, pandas, glob, matplotlib, json, filecmp (most are standard Anaconda packages)
+- FreeSurfer license (https://surfer.nmr.mgh.harvard.edu/fswiki/License)
+
+## Step 0: Download and prepare HBN data (if using HBN)
+- Obtain a Data Usage Agreement: http://fcon_1000.projects.nitrc.org/indi/cmi_healthy_brain_network/Pheno_Access.html#DUA
+- In your terminal, navigate in to the directory where you want your BIDS HBN data to live. Then, download the neuroimaging data with: `aws s3 cp s3://fcp-indi/data/Projects/HBN/MRI/Site-RU/ $path/to/HBN_dir --exclude "derivatives/*" --recursive`, where  `$path/to/HBN_dir` should be replaced by the path to your directory. This downloads the raw data from the Rutgers University site as used in our study, excluding preprocessed derivatives. You can change `RU` to look at other sites (for example `CBIC` for the Cornell site).
+- To prepare the HBN data for QSIPrep, we need to update the DWI JSON files so the DWI fieldmaps can be assosciated with the DWI NIFTI files. This involves:
+  1) Rename the fieldmap files to match BIDs conventions. In your BIDs code directory, download`rename_fmaps.sh`, update the variable `bids` in the first line to direct to your BIDs directory, and run the code.
+  2) Add "IntendedFor" fields in the JSON to associate fieldmaps with NIFTIs. Download `add_intended_for.ipynb` to your BIDS code directory, update the variable `bids` in the first line to direct to your BIDs directory, and run the code/notebook.
+- Open a fieldmap JSON file to make sure this field has been added, and that the name convention matches BIDS specification (https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/01-magnetic-resonance-imaging-data.html).
+  - `sub-<label>[_ses-<label>][_acq-<label>][_ce-<label>]_dir-<label>[_run-<index>]_epi.json`
+  - `sub-<label>[_ses-<label>][_acq-<label>][_ce-<label>]_dir-<label>[_run-<index>]_epi.nii[.gz]`
+- Using the HBN Loris portal (https://data.healthybrainnetwork.org/main.php) make a phenotypic query with _at least_ the following fields: "Basic_Demos", "TOWRE", and "EHQ"
+  - If you have proof of a Data Use Agreement, we can share the phenotypic file we used in the study
+
+## Step 1: Run QSIPrep to Preprocess DWI
+- Download the `code/QSIPrep` folder to your BIDS code folder. In it, add your FreeSurfer license as `license.txt` (case-sensitive).
+- In the `submit_job_array.sh` script, udpate the variable `base` in the beginning of the script to direct to your BIDS directory. Additionally, in the last line of the script, you can update the parameter after `%` to limit how many jobs can be active at a time. We set this to 100 as a default, but you can alter this or delete it to not set a limit.
+- In the `ss_qsiprep.sh` script, change the SBATCH header to match your desired parameters (e.g. memory usage, time-to-wall, etc). Then update the variable `IMG` to the path of your QSIPrep singularity image.
+- 
+
+## Step 2: Run TractSeg segmentation
+- Download the `code/TractSeg` folder to your BIDS code folder.
+
+## Extra documentation
+- Healthy Brain Network Data Portal (http://fcon_1000.projects.nitrc.org/indi/cmi_healthy_brain_network/index.html)
+- TractSeg Website (https://github.com/MIC-DKFZ/TractSeg)
+- QSIPrep Website (https://qsiprep.readthedocs.io/en/latest/)
