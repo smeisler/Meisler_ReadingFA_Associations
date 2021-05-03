@@ -10,8 +10,9 @@ This repository includes the code used to preprocess the neuroimaging data, segm
 ### In general
 - BIDS-compliant dataset with _at least_ T1w and DWI images
 - Singularity (used to compile and run Docker Images)
-  - QSIPrep docker container (singularity build qsiprep.simg docker://pennbbl/qsiprep:0.13.0RC1)
-  - TractSeg docker container (singularity build tractseg.simg docker://brainlife/tractseg:2.2)
+  - QSIPrep docker container (`singularity build qsiprep.simg docker://pennbbl/qsiprep:0.13.0RC1`)
+  - TractSeg docker container (`singularity build tractseg.simg docker://brainlife/tractseg:2.2`)
+  - If using your own single-shelled DTI data (not HBN), then you will also need mrtrix3tissue (`singularity build mrtrix3t.simg docker://vnmd/mrtrix3tissue_5.2.8:20201111)
   - Singularity 3.6.3 was used in this study. The above reference the images used in this study, but later versions of these software may introduce improvements that should be used in future research.
 - SLURM job scheduler, used for parallelizing jobs.
 - Python environment with Jupyter capabilities and the following packages: numpy, scipy, pandas, glob, matplotlib, json, filecmp (most are standard Anaconda packages)
@@ -37,6 +38,9 @@ This repository includes the code used to preprocess the neuroimaging data, segm
 
 ## Step 2: Run TractSeg segmentation
 - Download the `code/TractSeg` folder to your BIDS code folder.
+- In the `submit_job_array.sh` script, udpate the variable `base` in the beginning of the script to direct to your BIDS directory. Additionally, in the last line of the script, you can update the parameter after `%` to limit how many jobs can be active at a time. We set this to 100 as a default, but you can alter this or delete it to not set a limit.
+- If using your own data, change the `single_multi` (either 'single' or 'multi') and `flip_x` variables ('yes' or 'no') to match your data. That is, single shell data only has one non-0 b-value. The `flip_x` may be hard to know _apriori_, but typically Siemens data need it flipped. If unsure, leave it as 'yes', and if tracts do not look right, try changing it.
+- In terminal, navigate to the TractSeg code folder, and run `./submit_job_array.sh` to begin TractSeg.
 
 ## Setp 3: Perform Tractometry and Compare Cohort Characteristics
 Save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory. Download `HBN_query.ipynb` to your BIDS code directory, open it, and follow the directions in the notebook. This is mainly tailored towards analyzing HBN data but can be adapted to look at other data.
