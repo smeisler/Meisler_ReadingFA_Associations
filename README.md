@@ -48,7 +48,7 @@ Download `HBN_query.ipynb` to your BIDS code directory, open it, and follow the 
 - TractSeg Website (https://github.com/MIC-DKFZ/TractSeg)
 - QSIPrep Website (https://qsiprep.readthedocs.io/en/latest/)
 
-## Licensse
+## License
 
 MIT License
 
