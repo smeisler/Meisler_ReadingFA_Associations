@@ -33,4 +33,4 @@ len=$(expr ${#subjs[@]} - 1) # len - 1
 
 echo Spawning ${#subjs[@]} sub-jobs.
 
-sbatch --array=0-$len%100 ss_qsiprep.sh $base ${subjs[@]}
+sbatch --array=0-$len%100 $base/code/qsiprep/ss_qsiprep.sh $base ${subjs[@]}
