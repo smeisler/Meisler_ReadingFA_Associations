@@ -6,7 +6,7 @@ This repository includes the code used to preprocess the neuroimaging data, segm
 To cite:
 ---ADD CITATION HERE WHEN AVAILABLE---
 
-If using this code, please also cite relevant papers to the software and methods employed here. See our paper for these references.
+If using this code, please also cite relevant papers to the software and methods employed here. See our paper or the software-specific documentation (bottom of this README) for these references.
 
 ## Requirements
 ### In general
