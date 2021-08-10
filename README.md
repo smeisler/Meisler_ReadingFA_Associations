@@ -60,7 +60,7 @@ If using this code, please also cite relevant papers to the software and methods
 - Navigate terminal to your TractSeg derivatives folder and run the model: `singularity exec -e -B /PATH/TO/BIDS /PATH/TO/tractseg.simg plot_tractometry_results -i subjects.txt -o output.png`
 - - If making a 3D Plot ... (ADD INSTRUCTIONS)
 
-## Questions? Feel free to either open an issue in this repository or email Steven Meisler (smeisler@g.harvard.edu) with any problems, suggestions, or anything else!
+## Questions? Feel free to either open an issue in this repository or email Steven Meisler (smeisler@g.harvard.edu) with any problems, suggestions, or feedback!
 
 ## Extra documentation
 - Healthy Brain Network Data Portal (http://fcon_1000.projects.nitrc.org/indi/cmi_healthy_brain_network/index.html)
