@@ -15,12 +15,12 @@
 subjs=$@
 
 # SET THIS TO BE THE PATH TO YOUR BIDS DIRECTORY
-base=
+bids=
 
 if [[ $# -eq 0 ]]; then
     # first go to data directory, grab all subjects,
     # and assign to an array
-    pushd $base
+    pushd $bids
     subjs=($(ls sub-*/dwi -d))
     subjs=("${subjs[@]///dwi/}")
     popd
@@ -33,4 +33,4 @@ len=$(expr ${#subjs[@]} - 1) # len - 1
 
 echo Spawning ${#subjs[@]} sub-jobs.
 
-sbatch --array=0-$len%100 $base/code/qsiprep/ss_qsiprep.sh $base ${subjs[@]}
+sbatch --array=0-$len%100 $bids/code/qsiprep/ss_qsiprep.sh $bids ${subjs[@]}
