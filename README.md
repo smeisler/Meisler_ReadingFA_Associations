@@ -22,7 +22,7 @@ If using this code, please also cite relevant papers to the software and methods
 - FreeSurfer license (https://surfer.nmr.mgh.harvard.edu/fswiki/License)
 ### Additional requirements if downloading HBN data
 - Data Usage Agreement (if working with Healthy Brain Network data), used to access neuroimaging and phenotypic data
-- Amazon Web Services (AWS) Command Line version 2 (or any version with s3 capabilities), used to download neuroimaging data
+- Amazon Web Services (AWS) Command Line version 2 (or any version with s3 capabilities), used to download neuroimaging data (https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
 ## Step 0: Download and prepare HBN data (if using HBN)
 - Obtain a Data Usage Agreement: http://fcon_1000.projects.nitrc.org/indi/cmi_healthy_brain_network/Pheno_Access.html#DUA, https://data.healthybrainnetwork.org/login/request-account/
