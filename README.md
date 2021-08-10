@@ -25,7 +25,7 @@ If using this code, please also cite relevant papers to the software and methods
 - Amazon Web Services (AWS) Command Line version 2 (or any version with s3 capabilities), used to download neuroimaging data
 
 ## Step 0: Download and prepare HBN data (if using HBN)
-- Obtain a Data Usage Agreement: http://fcon_1000.projects.nitrc.org/indi/cmi_healthy_brain_network/Pheno_Access.html#DUA
+- Obtain a Data Usage Agreement: http://fcon_1000.projects.nitrc.org/indi/cmi_healthy_brain_network/Pheno_Access.html#DUA, https://data.healthybrainnetwork.org/login/request-account/
 - In your terminal, navigate in to the directory where you want your BIDS HBN data to live. Then, download the neuroimaging data with: `aws s3 cp s3://fcp-indi/data/Projects/HBN/MRI/Site-RU/ $path/to/HBN_dir --exclude "derivatives/*" --recursive`, where  `$path/to/HBN_dir` should be replaced by the path to your directory. This downloads the raw data from the Rutgers University site as used in our study, excluding preprocessed derivatives. You can change `RU` to look at other sites (for example `CBIC` for the Cornell site).
 - To prepare the HBN data for QSIPrep, we need to update the DWI JSON files so the DWI fieldmaps can be assosciated with the DWI NIFTI files. This involves:
   1) Rename the fieldmap files to match BIDs conventions. In your BIDs code directory, download`rename_fmaps.sh`, update the variable `bids` in the first line to direct to your BIDs directory, and run the code.
