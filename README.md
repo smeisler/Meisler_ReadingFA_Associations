@@ -16,7 +16,7 @@ If using this code, please also cite relevant papers to the software and methods
   - TractSeg docker container (`singularity build tractseg.simg docker://brainlife/tractseg:2.2`)
   - Combined MrTrix 3.0.2 w/ FSL 6.0.4 and ANTs 2.3.4 container (`singularity build mrtrix_fsl.simg docker://sclove/mrtrix3.0.2`)
   - If using your own single-shelled DTI data (not HBN), then you will also need mrtrix3tissue (`singularity build mrtrix3t.simg docker://vnmd/mrtrix3tissue_5.2.8:20201111`)
-  - Singularity 3.6.3 was used in this study. The images above were used in this study, but later versions of these software may introduce improvements that should be used in future research.
+  - Singularity 3.6.3 was used in this study. The images above were used in this study, but **more recent versions of these software may introduce improvements that should be used in future research.**
 - SLURM job scheduler, used for parallelizing jobs. If you uses SGE/PBS to schedule jobs, the scripts can be adapted using tips from this webpage: https://www.msi.umn.edu/slurm/pbs-conversion
 - Python environment with Jupyter capabilities and the following packages: numpy, scipy, pandas, glob, matplotlib, json, filecmp (most are standard Anaconda packages)
 - FreeSurfer license (https://surfer.nmr.mgh.harvard.edu/fswiki/License)
