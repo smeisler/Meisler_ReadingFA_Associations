@@ -1,9 +1,9 @@
 ---
 name: Feedback
 about: Provide some feedback about the code
-title: ''
+title: "[Feedback]:"
 labels: ''
-assignees: ''
+assignees: smeisler
 
 ---
 
