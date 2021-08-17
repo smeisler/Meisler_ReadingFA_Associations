@@ -33,7 +33,7 @@ If using this code, please also cite relevant papers to the software and methods
 - Open a fieldmap JSON file to make sure this field has been added, and that the name convention matches BIDS specification (https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/01-magnetic-resonance-imaging-data.html).
   - `sub-<label>[_ses-<label>][_acq-<label>][_ce-<label>]_dir-<label>[_run-<index>]_epi.json`
   - `sub-<label>[_ses-<label>][_acq-<label>][_ce-<label>]_dir-<label>[_run-<index>]_epi.nii[.gz]`
-- Using the HBN Loris portal (https://data.healthybrainnetwork.org/main.php) make a phenotypic query with _at least_ the following fields: "Basic_Demos", "TOWRE", "EHQ", and "BMSSS"
+- Using the HBN Loris portal (https://data.healthybrainnetwork.org/main.php) make a phenotypic query with _at least_ the following fields: "Basic_Demos", "TOWRE", "EHQ", and "Clinician Diagnoses"
   - If you have proof of a Data Use Agreement, we can share the phenotypic file we used in the study
 
 ## Step 1: Run QSIPrep to Preprocess DWI
