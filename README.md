@@ -34,7 +34,6 @@ If using this code, please also cite relevant papers to the software and methods
   - `sub-<label>[_ses-<label>][_acq-<label>][_ce-<label>]_dir-<label>[_run-<index>]_epi.json`
   - `sub-<label>[_ses-<label>][_acq-<label>][_ce-<label>]_dir-<label>[_run-<index>]_epi.nii[.gz]`
 - Using the HBN Loris portal (https://data.healthybrainnetwork.org/main.php) make a phenotypic query with _at least_ the following fields: "Basic_Demos", "TOWRE", "EHQ", and "Clinician Diagnoses"
-  - If you have proof of a Data Use Agreement, we can share the phenotypic file we used in the study
 
 ## Step 1: Run QSIPrep to Preprocess DWI
 - Download the `code/QSIPrep` folder to your BIDS code folder. In it, add your FreeSurfer license as `license.txt` (case-sensitive).
