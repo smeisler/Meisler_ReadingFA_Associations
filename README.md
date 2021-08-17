@@ -57,8 +57,8 @@ If using this code, please also cite relevant papers to the software and methods
 - Based on the analysis you want to run (correlation vs group difference) and your desired nuisance regressors, update line 28 in accordance with the directions written in the body of `subjects.txt`.
 - Save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory. Download `HBN_query.ipynb` to your BIDS code directory, open it, and follow the directions in the notebook. This is mainly tailored towards analyzing HBN data but can be adapted to look at other data.
 - Copy the tractometry model input (output of Step 5 of `HBN_query.ipynb`) and paste it to `subjects.txt` (or whatever you named it) under line 28.
-- Navigate terminal to your TractSeg derivatives folder and run the model: `singularity exec -e -B /PATH/TO/BIDS /PATH/TO/tractseg.simg plot_tractometry_results -i subjects.txt -o output.png`
-- - If making a 3D Plot ... (ADD INSTRUCTIONS)
+- Navigate terminal to your TractSeg derivatives folder and run the model: `singularity exec -e -B /PATH/TO/BIDS /PATH/TO/tractseg.simg plot_tractometry_results -i /PATH/TO/subjects.txt -o /PATH/TO/output`
+- - If making a 3D Plot, make sure you include the options `--plot3D pval` and  `--tracking_format trk` to the command
 
 ## Questions? Feel free to either open an issue in this repository or email Steven Meisler (smeisler@g.harvard.edu) with any problems, suggestions, or feedback!
 
