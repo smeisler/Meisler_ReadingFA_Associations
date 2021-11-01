@@ -53,12 +53,13 @@ If using this code, please also cite relevant papers to the software and methods
 - In terminal, navigate to the TractSeg code folder, and run `./submit_job_array.sh` to begin TractSeg.
 
 ## Step 3: Create a dataframe and run stats
+- Save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory. 
+- Using the numbered jupyter notebooks, create the dataframe with all relevant data, and then run the statistical models. Be sure to read the comments in the notebooks.
 
 ## Step 3: Perform Tractometry and Compare Cohort Characteristics
-- You should see a file called `subjects.txt` in your TractSeg derivatives folder. Open it and update the `/PATH/TO/BIDS` portion of lines 1 and 3 (beginning with `tracometry_path` and `plot_3d`) to direct to your BIDS directory. Feel free to rename this something more informative (e.g. `towre_group_difference.txt`)
+- You should see a file called `subjects.txt` in your TractSeg derivatives folder. Open it and update the `/PATH/TO/BIDS` portion of lines 1 and 3 (beginning with `tracometry_path` and `plot_3d`) to direct to your BIDS directory. Feel free to rename this file something more informative (e.g. `towre_group_difference.txt`)
 - Based on the analysis you want to run (correlation vs group difference) and your desired nuisance regressors, update line 28 in accordance with the directions written in the body of `subjects.txt`.
-- Save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory. Download `HBN_query.ipynb` to your BIDS code directory, open it, and follow the directions in the notebook. This is mainly tailored towards analyzing HBN data but can be adapted to look at other data.
-- Copy the tractometry model input (output of Step 5 of `HBN_query.ipynb`) and paste it to `subjects.txt` (or whatever you named it) under line 28.
+- Copy the tractometry model input (output of `5_tract_profiles.ipynb`) and paste it to `subjects.txt` (or whatever you named it) under line 28.
 - Navigate terminal to your TractSeg derivatives folder and run the model: `singularity exec -e -B /PATH/TO/BIDS /PATH/TO/tractseg.simg plot_tractometry_results -i /PATH/TO/subjects.txt -o /PATH/TO/output`
 - - If making a 3D Plot, make sure you include the options `--plot3D pval` and  `--tracking_format trk` to the command
 
