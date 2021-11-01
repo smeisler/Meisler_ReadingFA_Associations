@@ -17,7 +17,7 @@ subjs=$@
 # SET THIS TO BE THE PATH TO YOUR BIDS DIRECTORY
 bids=
 single_multi='multi' # "single" or "multi"-shell data
-flip_x='yes' # Need to flip peaks over x-axis
+flip_x='no' # Need to flip peaks over x-axis
 
 if [[ $# -eq 0 ]]; then
     # first go to data directory, grab all subjects,
