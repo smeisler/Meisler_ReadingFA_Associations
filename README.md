@@ -56,7 +56,7 @@ If using this code, please also cite relevant papers to the software and methods
 - Save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory. 
 - Using the numbered jupyter notebooks, create the dataframe with all relevant data, and then run the statistical models. Be sure to read the comments in the notebooks.
 
-## Step 4: Perform Tractometry (supplement)
+## Step 4: Perform tract profile analysis (supplement)
 - You should see a file called `subjects.txt` in your TractSeg derivatives folder. Open it and update the `/PATH/TO/BIDS` portion of lines 1 and 3 (beginning with `tracometry_path` and `plot_3d`) to direct to your BIDS directory. Feel free to rename this file something more informative (e.g. `towre_group_difference.txt`)
 - Based on the analysis you want to run (correlation vs group difference) and your desired nuisance regressors, update line 28 in accordance with the directions written in the body of `subjects.txt`.
 - Copy the tractometry model input (output of `5_tract_profiles.ipynb`) and paste it to `subjects.txt` (or whatever you named it) under line 28.
