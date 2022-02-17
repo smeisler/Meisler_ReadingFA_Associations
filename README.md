@@ -4,8 +4,9 @@ Code used in Meisler and Gabrieli 2022
 This repository includes the code used to preprocess the neuroimaging data, segment white matter tracts, perform tractometry, and compare cohort characteristics. The preprocessing and white matter segmentation is agnostic to the data set. That is, it can be run on **any BIDs** compliant dataset with T1w and diffusion data. The tractometry and cohort characteristic code is tailored to work with a Healthy Brain Network (HBN) phenotypic query, but can be adapted to work with a custom file.
 
 To cite:
----ADD CITATION HERE WHEN AVAILABLE---
+[![DOI:10.1016/j.neuroimage.2022.118909](http://img.shields.io/badge/DOI-10.1016/j.neuroimage.2022.118909-B31B1B.svg)](https://doi.org/10.1016/j.neuroimage.2022.118909)
 
+**Meisler, S.L. and Gabrieli, J.D.E "A Large-Scale Investigation of White Matter Microstructural Associations with Reading Ability." *NeuroImage* (2022): 118909.**
 If using this code, please also cite relevant papers to the software and methods employed here. See our paper or the software-specific documentation (bottom of this README) for these references.,
 
 ## Requirements
