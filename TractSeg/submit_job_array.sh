@@ -17,7 +17,6 @@ subjs=$@
 # SET THIS TO BE THE PATH TO YOUR BIDS DIRECTORY
 bids=
 single_multi='multi' # "single" or "multi"-shell data
-flip_x='no' # Need to flip peaks over x-axis
 
 if [[ $# -eq 0 ]]; then
     # first go to data directory, grab all subjects,
@@ -35,4 +34,4 @@ len=$(expr ${#subjs[@]} - 1) # len - 1
 echo Spawning ${#subjs[@]} sub-jobs.
 
 
-sbatch --array=0-$len%100 $bids/code/TractSeg/ss_tractseg.sh $single_multi $flip_x $bids ${subjs[@]}
+sbatch --array=0-$len%100 $bids/code/TractSeg/ss_tractseg.sh $single_multi $bids ${subjs[@]}
